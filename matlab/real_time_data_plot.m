@@ -30,12 +30,17 @@
 % Copyright 2009 - The MathWorks, Inc.
 
 %% Create the serial object
+clear;
+clc;
+delete(instrfindall);
 serialPort = 'COM5';
 serialObject = serial(serialPort);
 fopen(serialObject);
+serialObject.ReadAsyncMode = 'continuous';
+readasync(serialObject);
 
 %% Set the instrument in remote mode
-fprintf(serialObject,'SYSTEM:REMOTE');
+fprintf(serialObject,'1');
 
 %% Set up the figure window
 time = now;
@@ -75,20 +80,24 @@ timeInterval = 0.005;
 %% Collect data
 count = 1;
 
-while ~isequal(datestr(now,'mm/DD HH:MM'),stopTime)
+while count < 300
     time(count) = datenum(clock); 
-    fprintf(serialObject,'MEASURE:VOLTAGE:DC?'); % To measure current the command is MEASURE:CURRENT:DC?
-    voltage(count) = fscanf(serialObject,'%f');  %#ok<SAGROW>
+    %fprintf(serialObject,'r'); % To measure current the command is MEASURE:CURRENT:DC?
+    data = fread(serialObject,10);
+    %data2 = str2double(data);
+    voltage(count)=data(1);
+    %voltage(count) = fscanf(serialObject,'%d');  %#ok<SAGROW>
     set(plotHandle,'YData',voltage,'XData',time);
     set(figureHandle,'Visible','on');
     datetick('x','mm/DD HH:MM');
     
-    pause(timeInterval);
+%    pause(timeInterval);
     count = count +1;
+    drawnow;
 end
 
 %% Put the instrument in local mode
-fprintf(serialObject,'SYSTEM:LOCAL');
+%fprintf(serialObject,'SYSTEM:LOCAL');
 
 %% Clean up the serial object
 fclose(serialObject);
