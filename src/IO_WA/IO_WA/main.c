@@ -117,13 +117,14 @@ void ButtonEvents()
 
 	if(adc_stopped)
 	{
-		if (sample_flag < 50)
+		unsigned char temp = sample_flag;
+		if (temp < 50)
 		   sample_rate = 1;
-		else if (sample_flag < 100)
+		else if (temp < 100)
 			sample_rate = 3;
-		else if (sample_flag < 150)
+		else if (temp < 150)
 			sample_rate = 5;
-		else if (sample_flag < 200)
+		else if (temp < 200)
 			sample_rate = 7;
 		else
 			sample_rate = 10;
@@ -170,7 +171,7 @@ ISR(TIMER1_COMPA_vect) // TIMER1_CompareA_Handler (Interrupt Handler for Timer 1
 		itoa(sample_rate, strbuf, 10);
 		lcd_puts(strbuf);
 	}
-	else
+	else 
 	{
 		lcd_gotoxy(10,1);
 		itoa(freq, strbuf, 10);
@@ -183,6 +184,6 @@ ISR(ADC_vect)	// ADC Interrupt Handler
 {
 	if (ADMUX == CHANNEL0)
 		sample_flag = ADCH;
-	else 
+	else if (ADMUX == CHANNEL1)
 		USART_TX_SingleByte(ADCH);
 }
