@@ -42,7 +42,7 @@ serialObject.ReadAsyncMode = 'continuous';
 readasync(serialObject);
 
 %% Set the instrument in remote mode
-fprintf(serialObject,'1');
+%fprintf(serialObject,'1');
 
 %% Set up the figure window
 time = now;
@@ -70,25 +70,30 @@ xlim(axesHandle,[min(time) max(time+0.001)]);
 xlabel('Time','FontWeight','bold','FontSize',14,'Color',[1 1 0]);
 
 % Create ylabel
-ylabel('Voltage in V','FontWeight','bold','FontSize',14,'Color',[1 1 0]);
+ylabel('Value of ADC','FontWeight','bold','FontSize',14,'Color',[1 1 0]);
 
 % Create title
-title('Voltage Characteristics','FontSize',15,'Color',[1 1 0]);
+title('ADC Visualization','FontSize',15,'Color',[1 1 0]);
 
 
 %% Collect data
-count = 1;
 
-while count < 300
+t = 0;
+while (t<100)
+    data = fread(serialObject,1);
+    t = t+1;
+end
+count = 1;
+while count < 2000
     time(count) = datenum(clock); 
     %fprintf(serialObject,'r'); % To measure current the command is MEASURE:CURRENT:DC?
-    data = fread(serialObject,1);
+    data = fread(serialObject,100);
     %data2 = str2double(data);
     voltage(count)=data(1);
     %voltage(count) = fscanf(serialObject,'%d');  %#ok<SAGROW>
     set(plotHandle,'YData',voltage,'XData',time);
     set(figureHandle,'Visible','on');
-    datetick('x','mm/DD HH:MM');
+    datetick('x','HH:MM');
  
     count = count +1;
     drawnow;

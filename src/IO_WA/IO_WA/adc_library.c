@@ -19,7 +19,7 @@ void Initialise_ADC()
 // Bits 4:0 ?MUX4:0: Analog Channel and Gain Selection Bits (see 1281 manual p290)
 // 00000 = ADC0 (ADC channel 0, single-ended input)
 // 00010 = ADC2 (ADC channel 2, single-ended input)
-ADMUX = 0b01100010;	// AVCC REF, Left-adjust output (Read most-significant 8 bits via ADCH), Convert channel 2
+ADMUX = 0b01100000;	// AVCC REF, Left-adjust output (Read most-significant 8 bits via ADCH), Convert channel 0
 
 
 // ADCSRA ?ADC Control and Status Register A
@@ -73,10 +73,16 @@ DIDR2 = 0b11111111;	// Disable digital input on all bits (64-pin version of ATme
 
 void startADC()
 {
-ADCSRA |= 0b01000000;	// start ADC conversion	
+    //ADCSRA |= 0b01000000;	// start ADC conversion
+
+	ADCSRA |= (1 << ADEN); // enable adc bit 7
+	ADCSRA |= (1 << ADSC); // start conversion bit 6
 }
 
 void stopADC()
 {
-	ADCSRA |= 0b00000000;	// start ADC conversion
+	//ADCSRA &= 0b10111111;	// start ADC conversion
+
+	ADCSRA &= ~(1 << ADEN); //disable adc, bit 7
+	ADCSRA &= ~(1 << ADSC); //stop conversion, bit 6
 }
