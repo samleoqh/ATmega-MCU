@@ -1,0 +1,703 @@
+Archive member included to satisfy reference by file (symbol)
+
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6/crtatmega2560.o (exit)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+                              main.o (__do_copy_data)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+                              driver/lcdpcf8574.o (__do_clear_bss)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o)
+                              main.o (__itoa_ncheck)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(utoa_ncheck.o)
+                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o) (__utoa_common)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(strrev.o)
+                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(utoa_ncheck.o) (strrev)
+
+Allocating common symbols
+Common symbol       size              file
+
+pcf8574_pinstatus   0x8               driver/lcdpcf8574.o
+
+Discarded input sections
+
+ .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .text          0x00000000        0x0 adc_library.o
+ .data          0x00000000        0x0 adc_library.o
+ .bss           0x00000000        0x0 adc_library.o
+ .text.startADC
+                0x00000000        0xc adc_library.o
+ .text.stopADC  0x00000000        0xa adc_library.o
+ .text          0x00000000        0x0 driver/lcdpcf8574.o
+ .data          0x00000000        0x0 driver/lcdpcf8574.o
+ .bss           0x00000000        0x0 driver/lcdpcf8574.o
+ .text.lcd_data
+                0x00000000       0x14 driver/lcdpcf8574.o
+ .text.lcd_getxy
+                0x00000000        0x8 driver/lcdpcf8574.o
+ .text.lcd_puts_p
+                0x00000000       0x24 driver/lcdpcf8574.o
+ .text          0x00000000        0x0 driver/pcf8574.o
+ .data          0x00000000        0x0 driver/pcf8574.o
+ .bss           0x00000000        0x0 driver/pcf8574.o
+ .text.pcf8574_getoutput
+                0x00000000       0x14 driver/pcf8574.o
+ .text.pcf8574_setoutputpins
+                0x00000000       0x8a driver/pcf8574.o
+ .text.pcf8574_getinput
+                0x00000000       0x2a driver/pcf8574.o
+ .text.pcf8574_getinputpin
+                0x00000000       0x32 driver/pcf8574.o
+ .text          0x00000000        0x0 driver/twimaster.o
+ .data          0x00000000        0x0 driver/twimaster.o
+ .bss           0x00000000        0x0 driver/twimaster.o
+ .text.i2c_start_wait
+                0x00000000       0x50 driver/twimaster.o
+ .text.i2c_rep_start
+                0x00000000        0x6 driver/twimaster.o
+ .text.i2c_readAck
+                0x00000000       0x16 driver/twimaster.o
+ .text.i2c_readNak
+                0x00000000       0x16 driver/twimaster.o
+ .text          0x00000000        0x0 main.o
+ .data          0x00000000        0x0 main.o
+ .bss           0x00000000        0x0 main.o
+ .text          0x00000000        0x0 usart_library.o
+ .data          0x00000000        0x0 usart_library.o
+ .bss           0x00000000        0x0 usart_library.o
+ .text.USART_TX_SingleByte
+                0x00000000       0x10 usart_library.o
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(utoa_ncheck.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(utoa_ncheck.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(utoa_ncheck.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(strrev.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(strrev.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(strrev.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00100000         xr
+data             0x00800200         0x0000fe00         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+user_signatures  0x00850000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800200
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6/crtatmega2560.o
+LOAD adc_library.o
+LOAD driver/lcdpcf8574.o
+LOAD driver/pcf8574.o
+LOAD driver/twimaster.o
+LOAD main.o
+LOAD usart_library.o
+START GROUP
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libm.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libm.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6\libatmega2560.a
+END GROUP
+                0x00100000                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x100000
+                0x0000fe00                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xfe00
+                0x00010000                __EEPROM_REGION_LENGTH__ = DEFINED (__EEPROM_REGION_LENGTH__)?__EEPROM_REGION_LENGTH__:0x10000
+                0x00000400                __FUSE_REGION_LENGTH__ = DEFINED (__FUSE_REGION_LENGTH__)?__FUSE_REGION_LENGTH__:0x400
+                0x00000400                __LOCK_REGION_LENGTH__ = DEFINED (__LOCK_REGION_LENGTH__)?__LOCK_REGION_LENGTH__:0x400
+                0x00000400                __SIGNATURE_REGION_LENGTH__ = DEFINED (__SIGNATURE_REGION_LENGTH__)?__SIGNATURE_REGION_LENGTH__:0x400
+                0x00000400                __USER_SIGNATURE_REGION_LENGTH__ = DEFINED (__USER_SIGNATURE_REGION_LENGTH__)?__USER_SIGNATURE_REGION_LENGTH__:0x400
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x78c
+ *(.vectors)
+ .vectors       0x00000000       0xe4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6/crtatmega2560.o
+                0x00000000                __vector_default
+                0x00000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+                0x000000e4                . = ALIGN (0x2)
+                0x000000e4                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x000000e4        0x0 linker stubs
+ *(.trampolines*)
+                0x000000e4                __trampolines_end = .
+ *libprintf_flt.a:*(.progmem.data)
+ *libc.a:*(.progmem.data)
+ *(.progmem*)
+                0x000000e4                . = ALIGN (0x2)
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x000000e4                __ctors_start = .
+ *(.ctors)
+                0x000000e4                __ctors_end = .
+                0x000000e4                __dtors_start = .
+ *(.dtors)
+                0x000000e4                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x000000e4        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6/crtatmega2560.o
+                0x000000e4                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x000000e4       0x10 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x000000f4       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_copy_data.o)
+                0x000000f4                __do_copy_data
+ .init4         0x0000010e       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_clear_bss.o)
+                0x0000010e                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000011e        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ *(.init9)
+ *(.text)
+ .text          0x00000122        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6/crtatmega2560.o
+                0x00000122                __vector_38
+                0x00000122                __vector_22
+                0x00000122                __vector_28
+                0x00000122                __vector_1
+                0x00000122                __vector_32
+                0x00000122                __vector_34
+                0x00000122                __vector_24
+                0x00000122                __vector_12
+                0x00000122                __vector_55
+                0x00000122                __vector_46
+                0x00000122                __bad_interrupt
+                0x00000122                __vector_6
+                0x00000122                __vector_31
+                0x00000122                __vector_35
+                0x00000122                __vector_39
+                0x00000122                __vector_3
+                0x00000122                __vector_23
+                0x00000122                __vector_30
+                0x00000122                __vector_45
+                0x00000122                __vector_25
+                0x00000122                __vector_11
+                0x00000122                __vector_54
+                0x00000122                __vector_13
+                0x00000122                __vector_19
+                0x00000122                __vector_56
+                0x00000122                __vector_7
+                0x00000122                __vector_49
+                0x00000122                __vector_41
+                0x00000122                __vector_43
+                0x00000122                __vector_27
+                0x00000122                __vector_5
+                0x00000122                __vector_33
+                0x00000122                __vector_47
+                0x00000122                __vector_52
+                0x00000122                __vector_37
+                0x00000122                __vector_4
+                0x00000122                __vector_44
+                0x00000122                __vector_51
+                0x00000122                __vector_9
+                0x00000122                __vector_2
+                0x00000122                __vector_21
+                0x00000122                __vector_15
+                0x00000122                __vector_36
+                0x00000122                __vector_29
+                0x00000122                __vector_40
+                0x00000122                __vector_8
+                0x00000122                __vector_26
+                0x00000122                __vector_48
+                0x00000122                __vector_14
+                0x00000122                __vector_53
+                0x00000122                __vector_10
+                0x00000122                __vector_50
+                0x00000122                __vector_16
+                0x00000122                __vector_18
+                0x00000122                __vector_20
+                0x00000122                __vector_42
+                0x00000124                . = ALIGN (0x2)
+ *(.text.*)
+ .text.Initialise_ADC
+                0x00000124       0x24 adc_library.o
+                0x00000124                Initialise_ADC
+ .text.lcd_read
+                0x00000148       0x68 driver/lcdpcf8574.o
+ .text.lcd_waitbusy
+                0x000001b0       0x16 driver/lcdpcf8574.o
+ .text.toggle_e
+                0x000001c6       0x10 driver/lcdpcf8574.o
+ .text.lcd_write
+                0x000001d6      0x138 driver/lcdpcf8574.o
+ .text.lcd_command
+                0x0000030e       0x10 driver/lcdpcf8574.o
+                0x0000030e                lcd_command
+ .text.lcd_gotoxy
+                0x0000031e       0x10 driver/lcdpcf8574.o
+                0x0000031e                lcd_gotoxy
+ .text.lcd_clrscr
+                0x0000032e        0x6 driver/lcdpcf8574.o
+                0x0000032e                lcd_clrscr
+ .text.lcd_led  0x00000334       0x24 driver/lcdpcf8574.o
+                0x00000334                lcd_led
+ .text.lcd_home
+                0x00000358        0x6 driver/lcdpcf8574.o
+                0x00000358                lcd_home
+ .text.lcd_putc
+                0x0000035e       0x3c driver/lcdpcf8574.o
+                0x0000035e                lcd_putc
+ .text.lcd_puts
+                0x0000039a       0x1e driver/lcdpcf8574.o
+                0x0000039a                lcd_puts
+ .text.lcd_init
+                0x000003b8       0x8a driver/lcdpcf8574.o
+                0x000003b8                lcd_init
+ .text.pcf8574_init
+                0x00000442       0x20 driver/pcf8574.o
+                0x00000442                pcf8574_init
+ .text.pcf8574_getoutputpin
+                0x00000462       0x2e driver/pcf8574.o
+                0x00000462                pcf8574_getoutputpin
+ .text.pcf8574_setoutput
+                0x00000490       0x2c driver/pcf8574.o
+                0x00000490                pcf8574_setoutput
+ .text.pcf8574_setoutputpin
+                0x000004bc       0x68 driver/pcf8574.o
+                0x000004bc                pcf8574_setoutputpin
+ .text.pcf8574_setoutputpinhigh
+                0x00000524        0x6 driver/pcf8574.o
+                0x00000524                pcf8574_setoutputpinhigh
+ .text.pcf8574_setoutputpinlow
+                0x0000052a        0x6 driver/pcf8574.o
+                0x0000052a                pcf8574_setoutputpinlow
+ .text.i2c_init
+                0x00000530        0xc driver/twimaster.o
+                0x00000530                i2c_init
+ .text.i2c_start
+                0x0000053c       0x4e driver/twimaster.o
+                0x0000053c                i2c_start
+ .text.i2c_stop
+                0x0000058a       0x12 driver/twimaster.o
+                0x0000058a                i2c_stop
+ .text.i2c_write
+                0x0000059c       0x24 driver/twimaster.o
+                0x0000059c                i2c_write
+ .text.ButtonEvent
+                0x000005c0       0x46 main.o
+                0x000005c0                ButtonEvent
+ .text.InitialiseGeneral
+                0x00000606        0xe main.o
+                0x00000606                InitialiseGeneral
+ .text.InitialiseTimer1
+                0x00000614       0x28 main.o
+                0x00000614                InitialiseTimer1
+ .text.main     0x0000063c       0x1c main.o
+                0x0000063c                main
+ .text.__vector_17
+                0x00000658       0xac main.o
+                0x00000658                __vector_17
+ .text.USART_SETUP_9600_BAUD_ASSUME_1MHz_CLOCK
+                0x00000704       0x1e usart_library.o
+                0x00000704                USART_SETUP_9600_BAUD_ASSUME_1MHz_CLOCK
+ .text.avr-libc
+                0x00000722       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o)
+                0x00000722                __itoa_ncheck
+ .text.avr-libc
+                0x00000736       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(utoa_ncheck.o)
+                0x00000736                __utoa_ncheck
+                0x00000738                __utoa_common
+ .text.avr-libc
+                0x00000768       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr6\libc.a(strrev.o)
+                0x00000768                strrev
+                0x00000788                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000788        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+                0x00000788                _exit
+                0x00000788                exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000788        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr6\libgcc.a(_exit.o)
+ *(.fini0)
+                0x0000078c                _etext = .
+
+.data           0x00800200       0x1a load address 0x0000078c
+                0x00800200                PROVIDE (__data_start, .)
+ *(.data)
+ *(.data*)
+ *(.rodata)
+ .rodata        0x00800200        0xa main.o
+ *(.rodata*)
+ .rodata.str1.1
+                0x0080020a       0x10 main.o
+ *(.gnu.linkonce.d*)
+                0x0080021a                . = ALIGN (0x2)
+                0x0080021a                _edata = .
+                0x0080021a                PROVIDE (__data_end, .)
+
+.bss            0x0080021a        0xc
+                0x0080021a                PROVIDE (__bss_start, .)
+ *(.bss)
+ *(.bss*)
+ .bss.dataport  0x0080021a        0x1 driver/lcdpcf8574.o
+                0x0080021a                dataport
+ .bss.pressed   0x0080021b        0x1 main.o
+                0x0080021b                pressed
+ .bss.count     0x0080021c        0x2 main.o
+                0x0080021c                count
+ *(COMMON)
+ COMMON         0x0080021e        0x8 driver/lcdpcf8574.o
+                0x0080021e                pcf8574_pinstatus
+                0x00800226                PROVIDE (__bss_end, .)
+                0x0000078c                __data_load_start = LOADADDR (.data)
+                0x000007a6                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800226        0x0
+                [!provide]                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                [!provide]                PROVIDE (__noinit_end, .)
+                0x00800226                _end = .
+                [!provide]                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.user_signatures
+ *(.user_signatures*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x30
+ *(.comment)
+ .comment       0x00000000       0x30 adc_library.o
+                                 0x31 (size before relaxing)
+ .comment       0x00000030       0x31 driver/lcdpcf8574.o
+ .comment       0x00000030       0x31 driver/pcf8574.o
+ .comment       0x00000030       0x31 driver/twimaster.o
+ .comment       0x00000030       0x31 main.o
+ .comment       0x00000030       0x31 usart_library.o
+
+.note.gnu.avr.deviceinfo
+                0x00000000       0x40
+ .note.gnu.avr.deviceinfo
+                0x00000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega2560/avr6/crtatmega2560.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x1e8
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x30 adc_library.o
+ .debug_aranges
+                0x00000030       0x90 driver/lcdpcf8574.o
+ .debug_aranges
+                0x000000c0       0x68 driver/pcf8574.o
+ .debug_aranges
+                0x00000128       0x58 driver/twimaster.o
+ .debug_aranges
+                0x00000180       0x40 main.o
+ .debug_aranges
+                0x000001c0       0x28 usart_library.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x1455
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000       0xac adc_library.o
+ .debug_info    0x000000ac      0x852 driver/lcdpcf8574.o
+ .debug_info    0x000008fe      0x55d driver/pcf8574.o
+ .debug_info    0x00000e5b      0x1bd driver/twimaster.o
+ .debug_info    0x00001018      0x397 main.o
+ .debug_info    0x000013af       0xa6 usart_library.o
+
+.debug_abbrev   0x00000000      0x864
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0x4f adc_library.o
+ .debug_abbrev  0x0000004f      0x2b0 driver/lcdpcf8574.o
+ .debug_abbrev  0x000002ff      0x1eb driver/pcf8574.o
+ .debug_abbrev  0x000004ea       0xe5 driver/twimaster.o
+ .debug_abbrev  0x000005cf      0x21f main.o
+ .debug_abbrev  0x000007ee       0x76 usart_library.o
+
+.debug_line     0x00000000      0xf3d
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000       0xee adc_library.o
+ .debug_line    0x000000ee      0x4cc driver/lcdpcf8574.o
+ .debug_line    0x000005ba      0x3ab driver/pcf8574.o
+ .debug_line    0x00000965      0x2cb driver/twimaster.o
+ .debug_line    0x00000c30      0x223 main.o
+ .debug_line    0x00000e53       0xea usart_library.o
+
+.debug_frame    0x00000000      0x408
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x44 adc_library.o
+ .debug_frame   0x00000044      0x154 driver/lcdpcf8574.o
+ .debug_frame   0x00000198       0xe0 driver/pcf8574.o
+ .debug_frame   0x00000278       0xa0 driver/twimaster.o
+ .debug_frame   0x00000318       0xbc main.o
+ .debug_frame   0x000003d4       0x34 usart_library.o
+
+.debug_str      0x00000000      0x520
+ *(.debug_str)
+ .debug_str     0x00000000      0x14a adc_library.o
+                                0x17e (size before relaxing)
+ .debug_str     0x0000014a      0x19d driver/lcdpcf8574.o
+                                0x2f9 (size before relaxing)
+ .debug_str     0x000002e7      0x114 driver/pcf8574.o
+                                0x2eb (size before relaxing)
+ .debug_str     0x000003fb       0x4c driver/twimaster.o
+                                0x1ce (size before relaxing)
+ .debug_str     0x00000447       0xaa main.o
+                                0x25d (size before relaxing)
+ .debug_str     0x000004f1       0x2f usart_library.o
+                                0x1a2 (size before relaxing)
+
+.debug_loc      0x00000000      0xf05
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x5bb driver/lcdpcf8574.o
+ .debug_loc     0x000005bb      0x6f6 driver/pcf8574.o
+ .debug_loc     0x00000cb1      0x12d driver/twimaster.o
+ .debug_loc     0x00000dde      0x127 main.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000      0x1a0
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x20 adc_library.o
+ .debug_ranges  0x00000020       0x98 driver/lcdpcf8574.o
+ .debug_ranges  0x000000b8       0x58 driver/pcf8574.o
+ .debug_ranges  0x00000110       0x48 driver/twimaster.o
+ .debug_ranges  0x00000158       0x30 main.o
+ .debug_ranges  0x00000188       0x18 usart_library.o
+
+.debug_macro
+ *(.debug_macro)
+OUTPUT(IO_WA.elf elf32-avr)
+LOAD linker stubs

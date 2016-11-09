@@ -35,8 +35,10 @@ clc;
 delete(instrfindall);
 serialPort = 'COM5';
 serialObject = serial(serialPort);
+serialObject.BaudRate =9600;
 fopen(serialObject);
 serialObject.ReadAsyncMode = 'continuous';
+
 readasync(serialObject);
 
 %% Set the instrument in remote mode
@@ -73,9 +75,6 @@ ylabel('Voltage in V','FontWeight','bold','FontSize',14,'Color',[1 1 0]);
 % Create title
 title('Voltage Characteristics','FontSize',15,'Color',[1 1 0]);
 
-%% Set the time span and interval for data collection
-stopTime = '10/07 21:53';
-timeInterval = 0.005;
 
 %% Collect data
 count = 1;
@@ -83,15 +82,14 @@ count = 1;
 while count < 300
     time(count) = datenum(clock); 
     %fprintf(serialObject,'r'); % To measure current the command is MEASURE:CURRENT:DC?
-    data = fread(serialObject,10);
+    data = fread(serialObject,1);
     %data2 = str2double(data);
     voltage(count)=data(1);
     %voltage(count) = fscanf(serialObject,'%d');  %#ok<SAGROW>
     set(plotHandle,'YData',voltage,'XData',time);
     set(figureHandle,'Visible','on');
     datetick('x','mm/DD HH:MM');
-    
-%    pause(timeInterval);
+ 
     count = count +1;
     drawnow;
 end

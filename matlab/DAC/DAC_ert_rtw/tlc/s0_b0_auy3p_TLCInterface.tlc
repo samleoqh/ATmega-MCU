@@ -1,0 +1,122 @@
+%implements s0_b0_auy3p_TLCInterface "C"
+
+%function getInputAddr_0_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SineWave"
+%endfunction
+
+%function getInput_0_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SineWave"
+%endfunction
+
+%function getOutputAddr_0_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SFunction" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_0_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SFunction" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_0_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SFunction_DSTATE" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWork_0_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SFunction_DSTATE" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_0_0_0_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SineWave"
+%endfunction
+
+%function getInput_0_0_0_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SineWave"
+%endfunction
+
+%function getOutputAddr_0_0_0_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SFunction" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_0_0_0_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SFunction" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_0_0_0_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SFunction_DSTATE" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWork_0_0_0_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SFunction_DSTATE" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_0_0_0_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SineWave"
+%endfunction
+
+%function getInput_0_0_0_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SineWave"
+%endfunction
+
+%function getOutputAddr_0_0_0_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SFunction" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_0_0_0_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SFunction" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_0_0_0_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SFunction_DSTATE" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWork_0_0_0_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SFunction_DSTATE" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_0_0_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SineWave"
+%endfunction
+
+%function getInput_0_0_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SineWave"
+%endfunction
+
+%function getOutputAddr_0_0_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SFunction" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_0_0_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SFunction" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_0_0_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.SFunction_DSTATE" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWork_0_0_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.SFunction_DSTATE" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+

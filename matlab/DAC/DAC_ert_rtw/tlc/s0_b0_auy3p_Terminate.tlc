@@ -1,0 +1,19 @@
+%implements s0_b0_auy3p_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcTerminateFcnOfS0B0 = OpaqueTLCBlockFcn("Terminate", 0, 0, 0, 4)
+%assign tlcCleanupRuntimeResourcesFcnOfS0B0 = OpaqueTLCBlockFcn("CleanupRuntimeResources", 0, 0, 0, 4)
+%<tlcTerminateFcnOfS0B0>\
+%<tlcCleanupRuntimeResourcesFcnOfS0B0>\
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Terminate(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 4, fcnProtoType)>
+%endfunction
