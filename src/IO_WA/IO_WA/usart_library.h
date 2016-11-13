@@ -10,5 +10,6 @@
 
 void USART_SETUP_9600_BAUD_ASSUME_1MHz_CLOCK();
 void USART_TX_SingleByte (unsigned char cByte);
+void USART_SETUP_BAUD_ASSUME_16MHz_CLOCK(int32_t baudrate);
 
 #endif //__USART_LIBRARY_H__

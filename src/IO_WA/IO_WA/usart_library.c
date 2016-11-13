@@ -51,3 +51,47 @@ void USART_TX_SingleByte (unsigned char cByte)
 	
 	UDR0 = cByte; 	// Writing to the UDR Tx buffer transmits the byte
 }
+
+
+
+void USART_SETUP_BAUD_ASSUME_16MHz_CLOCK(int32_t baudrate)
+{
+	// UCSR0A ?USART Control and Status Register A
+	// bit 1 UX2 Double the USART TX speed (also depends Baud Rate Registers)
+	UCSR0A = 0b00000010;   // Set U2X (Double USART Tx speed, to reduce clocking error)
+
+	UCSR0B = 0b10011000;   // RX Complete Int Enable, RX Enable, TX Enable, 8-bit data
+
+	UCSR0C = 0b00000111;   // Asynchronous, No Parity, 1 stop, 8-bit data, Falling XCK edge
+
+	UBRR0H = 0;
+
+	switch (baudrate)
+	{
+
+		case 9600:
+		UBRR0L = 207;
+		break;
+		case 14400:
+		UBRR0L = 138;
+		break;
+		case 19200:
+		UBRR0L=103;
+		break;
+		case 28800:
+		UBRR0L=68;
+		break;
+		case 38400:
+		UBRR0L=51;
+		break;
+		case 57600:
+		UBRR0L=34;
+		break;
+		case 1000000:
+		UBRR0L=1;
+		break;
+		case 2000000:
+		UBRR0L=0;
+		break;
+	}
+}

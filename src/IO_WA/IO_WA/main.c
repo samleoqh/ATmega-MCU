@@ -1,8 +1,8 @@
 /*
  * IO_WA.c
- *
+ * course work demo project 
  * Created: 2016-11-08 21:17:38
- * Author : qhsam
+ * Author : Ravi and Brian
  */ 
 
 #include <avr/io.h>
@@ -19,7 +19,7 @@
 void InitialiseGeneral();
 void ButtonEvents();
 void Start_LCD();
-void InitialiseTimer1()	;
+void InitialiseTimer5()	;
 
 #define setbit(port, bit) (port) |= (1 << (bit))
 #define clearbit(port, bit) (port) &= ~(1 << (bit))
@@ -32,10 +32,11 @@ void InitialiseTimer1()	;
 int btn_count = 0;
 bool pressed = false;
 bool adc_stopped = true;
+bool change_ch = false;
 char strbuf[10];
+unsigned char new_ch;
 
-int sample_rate = 15;
-int freq = 1000;
+int sample_rate = 9;
 unsigned char sample_flag = 0;
 
 int main(void)
@@ -44,16 +45,17 @@ int main(void)
 
 	InitialiseGeneral();
 	Start_LCD();
-	USART_SETUP_9600_BAUD_ASSUME_1MHz_CLOCK();
+	//USART_SETUP_9600_BAUD_ASSUME_1MHz_CLOCK();
+	USART_SETUP_BAUD_ASSUME_16MHz_CLOCK(1000000);
 	Initialise_ADC();
-	InitialiseTimer1();
+	setSamplerateADC(152);
+	InitialiseTimer5();
 	startADC();
 
 	while (1)
 	{
 		ButtonEvents();
 	}
-
 	return 1;
 }
 
@@ -68,11 +70,10 @@ void Start_LCD()
 	lcd_puts ("SR:");
 	lcd_gotoxy(5, 1);
 	lcd_puts ("k");
-	lcd_gotoxy(7, 1);
-	lcd_puts ("FQ:");
-	lcd_gotoxy(14, 1);
-	lcd_puts ("hz");
-
+	lcd_gotoxy(9, 1);
+	lcd_puts ("CHAN:");
+	//lcd_gotoxy(14, 1);
+	//lcd_puts ("hz");
 }
 
 void ButtonEvents()
@@ -101,7 +102,9 @@ void ButtonEvents()
 		if (adc_stopped)
 		{
 			startADC();
-			ADMUX = CHANNEL1;	
+			change_ch = true;
+			new_ch = CHANNEL1;
+			//ADMUX = CHANNEL1;	
 			adc_stopped = false;
 		}
 	}
@@ -110,7 +113,8 @@ void ButtonEvents()
 		if (!adc_stopped)
 		{
 			//stopADC();
-			ADMUX = CHANNEL0;	
+			change_ch = true;
+			new_ch = CHANNEL0;	
 			adc_stopped = true;
 		}
 	}
@@ -119,15 +123,15 @@ void ButtonEvents()
 	{
 		unsigned char temp = sample_flag;
 		if (temp < 50)
-		   sample_rate = 1;
+		   sample_rate = 9;
 		else if (temp < 100)
-			sample_rate = 3;
+			sample_rate = 19;
 		else if (temp < 150)
-			sample_rate = 5;
+			sample_rate = 38;
 		else if (temp < 200)
-			sample_rate = 7;
+			sample_rate = 76;
 		else
-			sample_rate = 10;
+			sample_rate = 152;
 	}
 }
 
@@ -143,25 +147,22 @@ void InitialiseGeneral()
 	sei();					// Enable interrupts at global level set Global Interrupt Enable (I) bit
 }
 
-void InitialiseTimer1()		// Configure to generate an interrupt after a 2-Second interval
+void InitialiseTimer5()		// Configure to generate an interrupt after a 2-Second interval
 {
-	TCCR1A = 0b00000000;	// Normal port operation (OC1A, OC1B, OC1C), Clear Timer on 'Compare Match' (CTC) waveform mode)
-	TCCR1B = 0b00001101;	// CTC waveform mode, use prescaler 1024
-	TCCR1C = 0b00000000;
+	TCCR5A = 0b00000000;	// Normal port operation (OC1A, OC1B, OC1C), Clear Timer on 'Compare Match' (CTC) waveform mode)
+	TCCR5B = 0b00001101;	// CTC waveform mode, use prescaler 1024
+	TCCR5C = 0b00000000;
 	
-	// For 1 MHz clock (with 1024 prescaler) to achieve a 2 second interval:
-	// Need to count 2 million clock cycles (but already divided by 1024)
-	// So actually need to count to (2000000 / 1024 =) 1953 decimal, = 7A1 Hex
-	OCR1AH = 0x07; // Output Compare Registers (16 bit) OCR1BH and OCR1BL
-	OCR1AL = 0xA1; //
+	OCR5AH = 0x7A; // Output Compare Registers (16 bit) OCR1BH and OCR1BL
+	OCR5AL = 0x01; //
 
-	TCNT1H = 0b00000000;	// Timer/Counter count/value registers (16 bit) TCNT1H and TCNT1L
-	TCNT1L = 0b00000000;
-	TIMSK1 = 0b00000010;	// bit 1 OCIE1A		Use 'Output Compare A Match' Interrupt, i.e. generate an interrupt
+	TCNT5H = 0b00000000;	// Timer/Counter count/value registers (16 bit) TCNT1H and TCNT1L
+	TCNT5L = 0b00000000;
+	TIMSK5 = 0b00000010;	// bit 1 OCIE1A		Use 'Output Compare A Match' Interrupt, i.e. generate an interrupt
 	// when the timer reaches the set value (in the OCR1A registers)
 }
 	
-ISR(TIMER1_COMPA_vect) // TIMER1_CompareA_Handler (Interrupt Handler for Timer 1)
+ISR(TIMER5_COMPA_vect) // TIMER1_CompareA_Handler (Interrupt Handler for Timer 1)
 {
 	if (ADMUX == CHANNEL0)
 	{
@@ -171,19 +172,24 @@ ISR(TIMER1_COMPA_vect) // TIMER1_CompareA_Handler (Interrupt Handler for Timer 1
 		itoa(sample_rate, strbuf, 10);
 		lcd_puts(strbuf);
 	}
-	else 
-	{
-		lcd_gotoxy(10,1);
-		itoa(freq, strbuf, 10);
-		lcd_puts(strbuf);
-	}
+	lcd_gotoxy(14,1);
+	//itoa(freq, strbuf, 10);
+	lcd_puts("1");
 }
 
 
 ISR(ADC_vect)	// ADC Interrupt Handler
 {
-	if (ADMUX == CHANNEL0)
+	unsigned char ADMUX_temp = ADMUX;
+
+	if (change_ch)
+	{
+		ADMUX = new_ch;
+		change_ch = false;
+	}
+
+	if (ADMUX_temp == CHANNEL0)
 		sample_flag = ADCH;
-	else if (ADMUX == CHANNEL1)
+	else if (ADMUX_temp == CHANNEL1)
 		USART_TX_SingleByte(ADCH);
 }

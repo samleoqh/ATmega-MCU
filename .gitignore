@@ -31,3 +31,8 @@
 # Debug files
 *.dSYM/
 *.su
+*.Debug/
+*.lss
+*.map
+*.srec
+

@@ -10,7 +10,8 @@
 #define __ADC_LIBRARY_H__
 
 void Initialise_ADC();
-void Start_ADC_Conversion(void);
+//void Start_ADC_Conversion(void);
+void setSamplerateADC(int rate);
 void startADC();
 void stopADC();
 

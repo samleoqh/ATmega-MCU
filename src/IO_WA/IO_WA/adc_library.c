@@ -9,6 +9,30 @@
 #include <avr/interrupt.h>
 #include "adc_library.h"
 
+void setSamplerateADC(int rate)
+{
+	switch (rate)
+	{
+		case 152:
+		ADCSRA = 0b10101011;
+		break;
+
+		case 76:
+		ADCSRA = 0b10101100;
+		break;
+
+		case 38:
+		ADCSRA = 0b10101101;
+		break;
+		case 19:
+		ADCSRA = 0b10101110;
+		break;
+		case 9:
+		ADCSRA = 0b10101111;
+		break;
+	}
+}
+
 void Initialise_ADC()	
 {
 // ADMUX ?ADC Multiplexer Selection Register
@@ -38,7 +62,7 @@ ADMUX = 0b01100000;	// AVCC REF, Left-adjust output (Read most-significant 8 bit
 // 110 = division factor 64
 // 111 = division factor 128
 
-ADCSRA = 0b10101000;	// ADC enabled, Auto trigger, Interrupt enabled, Prescaler = 32
+ADCSRA = 0b10101100;	// ADC enabled, Auto trigger, Interrupt enabled, Prescaler = 15
 
 //ADCSRA & (1<<ADEN);
 //PORTD &= ~(1<<PDx);
