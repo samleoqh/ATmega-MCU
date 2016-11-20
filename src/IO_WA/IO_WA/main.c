@@ -27,19 +27,18 @@
 //declare functions
 void InitialiseGeneral();
 void Initialise_Btn_INTs();
+void Enable_Btn_INTs();
+void Disable_Btn_INTs();
 void InitialiseTimer1();
-//void InitialiseTimer5();
 void Initializse_LCD();
-void initializse_mode_data();
+void Update_LCD();
 void update_mode_data();
 void update_led_state();
 void update_channel_led();
-void Enable_Btn_INTs();
-void Disable_Btn_INTs();
-void Update_LCD();
-void trigger_mode_change_btn();
-void trigger_setting_btn();
-void trigger_start_stop_btn();
+
+void toggle_mode_change();
+void toggle_channel_pwmFreq_switch();
+void toggle_start_stop_evt();
 void change_adc_channel(unsigned char new_channel);
 
 //macro for bit operation
@@ -67,8 +66,8 @@ void change_adc_channel(unsigned char new_channel);
 #define RGB_LED_R	DDC1	//PORTC1
 #define RGB_LED_G	DDC2	//PORTC2
 #define RGB_LED_B	DDC3	//PORTC3
-
 #define PWM_LED		DDC4	//PORTC4
+
 // define H/W interrupts for buttons
 #define START_STOP_BUTTON INT2_vect
 #define MODE_BUTTON		  INT3_vect
@@ -76,8 +75,9 @@ void change_adc_channel(unsigned char new_channel);
 
 // default string length for mode information
 #define STR_LEN 10	
+
 // define a struct for store mode data
-struct MODE_Info
+typedef struct MODE_Info
 {
 	char mode_name[STR_LEN];			// static mode title 
 	char label_SRorFN[STR_LEN];	// static SR or FN string
@@ -89,27 +89,63 @@ struct MODE_Info
 	uint8_t pulse_width;			//default 1 for PWM
 	uint8_t sample_rate;			//default 76kHz	for ADC
 	uint8_t new_channel;		//default 0 for ADC
+} MODE_DATA;
+
+//declare 3 modes info struct var
+MODE_DATA adc_info ={
+	.mode_name = "ADC_MODE ",
+	.label_SRorFN = "SR:",
+	.label_CHorPW = "CH:",
+	.mode_state = "stop",
+	.data_srfn = "76K  ",
+	.data_chpw = "1  ",
+	.new_channel = CHANNEL1,
+	.sample_rate = SAMPLE_RATE_76K,	//default 76kHz
+	.freq = 0,
+	.pulse_width = 0
 };
 
-//declare two mode info struct var
-struct MODE_Info adc_info;
-struct MODE_Info pwm_info;
-struct MODE_Info sleep_info;
+MODE_DATA pwm_info ={
+	.mode_name = "PWM_MODE ",
+	.label_SRorFN = "FN:",
+	.label_CHorPW = "PW:",
+	.mode_state = "stop",
+	.data_srfn = "62.5K",
+	.data_chpw = "20 ",
+	.freq = FREQ_62_5KHZ,
+	.pulse_width = 0,
+	.new_channel = 0,
+	.sample_rate = 0
+};
+
+MODE_DATA sleep_info ={
+	.mode_name = "SLEEP_MODE",
+	.label_SRorFN = "",
+	.label_CHorPW = "",
+	.mode_state = "",
+	.data_srfn = "",
+	.data_chpw = "",
+	.freq = 0,
+	.pulse_width = 0,
+	.new_channel = 0,
+	.sample_rate = 0
+};
+
 //declare a struct pointer link to on going mode
-static struct MODE_Info* mode_info = NULL;
+static MODE_DATA* mode_info = &adc_info;
 
 //define two basic operation modes
 typedef enum  {ADC_MODE, PWM_MODE, SLEEP_MODE}  OPT_MODE;
-OPT_MODE cur_mode;
+OPT_MODE cur_mode = ADC_MODE;
 
 //define 2 actions for button 3 
 typedef enum {STOP, START} BTN_ACTION;			
 BTN_ACTION goto_action = START;
 
-uint8_t channel_count = 0;
+uint8_t channel_count = 2;
 uint8_t freq_count = 0;
 
-//#define TIMING_DIAGNOS  1 // comment this line when no using time diagnostic functions
+//#define TIMING_DIAGNOS  1 // comment this line when dont using time diagnostic functions
 
 int main(void)
 {
@@ -128,14 +164,11 @@ int main(void)
 	TimingDiagnostic_CheckPoint(g_iCheckPointArrayIndex++); // timing diagnostic 
 	TimingDiagnostic_CheckPoint(g_iCheckPointArrayIndex++); // timing diagnostic --check the offset
 	TimingDiagnostic_ResetTimer4();		
-	initializse_mode_data();
-	TimingDiagnostic_ResetTimer4();
 	InitialiseTimer1();
 	Initialise_Btn_INTs();
 	TimingDiagnostic_ResetTimer4();
 	TimingDiagnostic_Display_CheckPoint_DataViaUSART0(g_iCheckPointArrayIndex);
 #else
-	initializse_mode_data();
 	InitialiseTimer1();
 	Initialise_Btn_INTs();
 #endif
@@ -152,43 +185,7 @@ int main(void)
 	}
 }
 
-void initializse_mode_data()
-{
-#ifdef TIMING_DIAGNOS
-	TimingDiagnostic_ResetTimer4();
-	TimingDiagnostic_CheckPoint(g_iCheckPointArrayIndex++); // timing diagnostic
-#endif
 
-	// initial default mode information
-	strcpy(adc_info.mode_name,"ADC_MODE ");
-	strcpy(adc_info.label_SRorFN,"SR:");
-	strcpy(adc_info.label_CHorPW,"CH:");
-	strcpy(adc_info.mode_state,"stop");
-	strcpy(adc_info.data_srfn,"76K  ");
-	strcpy(adc_info.data_chpw,"1  ");
-	adc_info.new_channel = CHANNEL1;	//default A0 channel
-	adc_info.sample_rate = SAMPLE_RATE_76K;	//default 76kHz
-	channel_count = 2;
-
-	strcpy(pwm_info.mode_name,"PWM_MODE ");
-	strcpy(pwm_info.label_SRorFN,"FN:");
-	strcpy(pwm_info.label_CHorPW,"PW:");
-	strcpy(adc_info.mode_state,"stop");
-	strcpy(pwm_info.data_srfn,"62.5K");
-	strcpy(pwm_info.data_chpw,"20 ");
-	pwm_info.freq = FREQ_62_5KHZ;
-	pwm_info.pulse_width = 1;
-
-	strcpy(sleep_info.mode_name,"SLEEP_MODE");
-	strcpy(sleep_info.mode_state,"ON");
-
-	cur_mode = ADC_MODE;    //default start mode
-	mode_info = &adc_info;	//pointer to default mode - ADC mode
-
-#ifdef TIMING_DIAGNOS
-	TimingDiagnostic_CheckPoint(g_iCheckPointArrayIndex++); // timing diagnostic
-#endif
-}
 void Initializse_LCD()
 {
 	lcd_init(LCD_DISP_ON);	// initial lcd driver
@@ -350,7 +347,7 @@ void update_mode_data()
 		break;
 
 		case PWM_MODE:
-			pwm_info.pulse_width = (int)temp;
+			pwm_info.pulse_width = temp;
 			itoa(temp, pwm_info.data_chpw, STR_LEN);
 		break;
 		case SLEEP_MODE:
@@ -359,9 +356,10 @@ void update_mode_data()
 	}	
 }
 
-ISR(TIMER1_COMPA_vect) // TIMER1_CompareA_Handler (Interrupt Handler for Timer 1)
+//update mode and led information by 0.5 second interval 
+ISR(TIMER1_COMPA_vect) // Interrupt Handler for Timer 1
 {
-	if (goto_action == START) update_mode_data();
+	if (goto_action != STOP) update_mode_data();
 	update_led_state();
 }
 
@@ -379,8 +377,8 @@ void Initialise_Btn_INTs()
 TimingDiagnostic_ResetTimer4();
 TimingDiagnostic_CheckPoint(g_iCheckPointArrayIndex++); // timing diagnostic
 #endif
-	EICRA = 0b10100000;	// falling-edge triggered for Button 1 & 2	
-	EICRB = 0b00000010; // falling-edge triggered for Button 3	
+	EICRA = 0b10100000;	// falling-edge triggered for INT2 & 3
+	EICRB = 0b00000010; // falling-edge triggered for INT4	
 	EIMSK = 0b00000000;	// Initially disabled, 		
 	EIFR = 0b11111111;	// Clear all HW interrupt flags 
 #ifdef TIMING_DIAGNOS
@@ -403,9 +401,9 @@ ISR(SETTING_BUTTON)
 {
 	Disable_Btn_INTs();	// Disable INT to prevent key bounce
 	if (cur_mode==SLEEP_MODE)
-		trigger_mode_change_btn();
-	else if(goto_action == START)
-		trigger_setting_btn();
+		toggle_mode_change();
+	else if(goto_action != STOP)
+		toggle_channel_pwmFreq_switch();
 	Enable_Btn_INTs();	// Re-enable the interrupt
 }
 
@@ -414,9 +412,9 @@ ISR(START_STOP_BUTTON) // Interrupt Handler for H/W INT 2
 {
 	Disable_Btn_INTs();		// Disable INT to prevent key bounce
 	if (cur_mode == SLEEP_MODE)
-		trigger_mode_change_btn();
+		toggle_mode_change();
 	else
-		trigger_start_stop_btn();
+		toggle_start_stop_evt();
 	Enable_Btn_INTs();		// Re-enable the interrupt
 }
 
@@ -424,12 +422,12 @@ ISR(START_STOP_BUTTON) // Interrupt Handler for H/W INT 2
 ISR(MODE_BUTTON)  
 {
 	Disable_Btn_INTs();
-	if (goto_action == START)
-		trigger_mode_change_btn();	
+	if (goto_action != STOP)
+		toggle_mode_change();
 	Enable_Btn_INTs();
 } 
 
-void trigger_mode_change_btn()
+void toggle_mode_change()
 {
 	OPT_MODE temp = cur_mode;
 	switch(temp)
@@ -442,15 +440,17 @@ void trigger_mode_change_btn()
 		case PWM_MODE:
 			cur_mode = SLEEP_MODE;
 			mode_info = &sleep_info;
+			stopADC();
 		break;
 		case SLEEP_MODE:
 			cur_mode = ADC_MODE;
-			mode_info = &adc_info;
+			startADC();
+			mode_info = &adc_info;			
 		break;
 	}
 }
 
-void trigger_setting_btn()
+void toggle_channel_pwmFreq_switch()
 {
 	OPT_MODE temp = cur_mode;
 	if (temp == PWM_MODE)
@@ -486,19 +486,19 @@ void trigger_setting_btn()
 		{
 			case 0:
 				adc_info.new_channel = CHANNEL0;
-				strncpy(adc_info.data_chpw,"0  ", STR_LEN);
+				strcpy(adc_info.data_chpw,"0  ");
 			break;
 			case 1:
 				adc_info.new_channel = CHANNEL1;
-				strncpy(adc_info.data_chpw,"1  ", STR_LEN);
+				strcpy(adc_info.data_chpw,"1  ");
 			break;
 			case 2:
 				adc_info.new_channel = CHANNEL2;
-				strncpy(adc_info.data_chpw,"2  ", STR_LEN);
+				strcpy(adc_info.data_chpw,"2  ");
 			break;
 			case 3:
 				adc_info.new_channel = CHANNEL3;
-				strncpy(adc_info.data_chpw,"3  ", STR_LEN);
+				strcpy(adc_info.data_chpw,"3  ");
 			break;
 		}
 		channel_count++;
@@ -513,7 +513,7 @@ void change_adc_channel(unsigned char new_channel)
 	ADMUX = new_channel;
 }
 
-void trigger_start_stop_btn()
+void toggle_start_stop_evt()
 {
 	BTN_ACTION cur_action = goto_action;
 	switch(cur_action)
@@ -525,15 +525,15 @@ void trigger_start_stop_btn()
 			goto_action = START;	// next action		
 		break;
 		case START:
+			strcpy(adc_info.mode_state,"start");
+			strcpy(pwm_info.mode_state,"start");
 			if (cur_mode == ADC_MODE)
 			{
 				change_adc_channel(adc_info.new_channel);
 				setSamplerateADC(adc_info.sample_rate);
-				strcpy(adc_info.mode_state,"start");
 			}
 			else if (cur_mode == PWM_LED)  //in PWM mode
 			{
-				strcpy(pwm_info.mode_state,"start");
 				enablePWM(0,pwm_info.pulse_width,pwm_info.freq);
 			}
 			else // in sleep mode
