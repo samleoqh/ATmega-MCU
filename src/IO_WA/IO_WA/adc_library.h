@@ -11,7 +11,7 @@
 
 void Initialise_ADC();
 //void Start_ADC_Conversion(void);
-void setSamplerateADC(int rate);
+void setSamplerateADC(uint8_t rate);
 void startADC();
 void stopADC();
 

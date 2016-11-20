@@ -9,7 +9,7 @@
 #include <avr/interrupt.h>
 #include "adc_library.h"
 
-void setSamplerateADC(int rate)
+void setSamplerateADC(uint8_t rate)
 {
 	switch (rate)
 	{
@@ -82,7 +82,7 @@ ADCSRB &= 0b11110000;	// clear bits 3,2,1,0 (Free running mode)
 
 // DIDR0 ?Digital Input Disable Register 0
 // Bit 7:0 ?ADC7D:ADC0D: ADC7:0 Digital Input Disable
-DIDR0 = 0b00000100;	// Disable digital input on bit 2
+DIDR0 = 0b00001111;	// Disable digital input on bit 2
 
 // DIDR2 ?Digital Input Disable Register 2
 // Bit 7:0 ?ADC15D:ADC8D: ADC15:8 Digital Input Disable
