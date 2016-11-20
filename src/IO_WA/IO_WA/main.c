@@ -14,13 +14,13 @@
 #include "string.h"
 //own lib
 #include "driver/usart_library.h"
+#include "driver/diagnostic.h"
 #include "adc_library.h"
 #include "pwm_library.h"
 
 //3-part lib of lcd driver
 #include "driver/lcdpcf8574.h"
 #include "driver/pcf8574.h"
-#include "driver/diagnostic.h"
 
 #define F_CPU 16000000UL
 
@@ -53,13 +53,13 @@ void change_adc_channel(unsigned char new_channel);
 #define CHANNEL3 0b01100011
 
 #define SAMPLE_RATE_76K 76		//76KHz for ADC
-#define FREQ_245HZ		0		//num for generate 245hz waveform 
-#define FREQ_1KHZ		5		//num for generate 1Khz waveform 
-#define FREQ_7_8KHZ		40		//num for generate 7.8Khz waveform 
-#define FREQ_62_5KHZ	65		//num for generate 62.5Khz waveform 
+#define FREQ_245HZ      0		//num for generate 245hz waveform 
+#define FREQ_1KHZ       5		//num for generate 1Khz waveform 
+#define FREQ_7_8KHZ     40		//num for generate 7.8Khz waveform 
+#define FREQ_62_5KHZ    65		//num for generate 62.5Khz waveform 
 
-#define BAUD_2M			2000000 //baud rate default for usart setup
-#define BARU_96K		9600	//baud rate 9600;
+#define BAUD_2M   2000000 //baud rate default for usart setup
+#define BARU_96K  9600	//baud rate 9600;
 
 // define LED port mapping
 #define ADC_LED		DDC0	//PORTC0
@@ -69,12 +69,12 @@ void change_adc_channel(unsigned char new_channel);
 #define PWM_LED		DDC4	//PORTC4
 
 // define H/W interrupts for buttons
-#define START_STOP_BUTTON INT2_vect
-#define MODE_BUTTON		  INT3_vect
-#define SETTING_BUTTON	  INT4_vect
+#define START_STOP_BUTTON  INT2_vect
+#define MODE_BUTTON        INT3_vect
+#define SETTING_BUTTON     INT4_vect
 
 // default string length for mode information
-#define STR_LEN 10	
+#define STR_LEN  10	
 
 // define a struct for store mode data
 typedef struct MODE_Info
@@ -100,7 +100,7 @@ MODE_DATA adc_info ={
 	.data_srfn = "76K  ",
 	.data_chpw = "1  ",
 	.new_channel = CHANNEL1,
-	.sample_rate = SAMPLE_RATE_76K,	//default 76kHz
+	.sample_rate = SAMPLE_RATE_76K,	
 	.freq = 0,
 	.pulse_width = 0
 };
@@ -165,18 +165,17 @@ int main(void)
 	TimingDiagnostic_CheckPoint(g_iCheckPointArrayIndex++); // timing diagnostic --check the offset
 	TimingDiagnostic_ResetTimer4();		
 	InitialiseTimer1();
-	Initialise_Btn_INTs();
 	TimingDiagnostic_ResetTimer4();
 	TimingDiagnostic_Display_CheckPoint_DataViaUSART0(g_iCheckPointArrayIndex);
 #else
 	InitialiseTimer1();
-	Initialise_Btn_INTs();
 #endif
 
 	Initializse_LCD(); 
+	Initialise_Btn_INTs();
 	Enable_Btn_INTs();
-	setSamplerateADC(SAMPLE_RATE_76K);
 	Initialise_ADC();
+	setSamplerateADC(SAMPLE_RATE_76K);
 	startADC();	
 	
 	while (1)
