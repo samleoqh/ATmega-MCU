@@ -4,12 +4,15 @@
 * Created: 16-10-2016 20:49:13
 * Author: ravim
 */
-
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "usart_library.h"
+#include "string.h"
 
-
+#define CR 0x0D
+#define LF 0x0A
+#define SPACE 0x20
+#define UC unsigned char
 
 //**************USART ****************************//
 
@@ -53,8 +56,8 @@ void USART_TX_SingleByte (unsigned char cByte)
 }
 
 
-
-void USART_SETUP_BAUD_ASSUME_16MHz_CLOCK(int32_t baudrate)
+// for 16Mhz
+void Initialise_Usart(int32_t baudrate)
 {
 	// UCSR0A ?USART Control and Status Register A
 	// bit 1 UX2 Double the USART TX speed (also depends Baud Rate Registers)
@@ -94,4 +97,38 @@ void USART_SETUP_BAUD_ASSUME_16MHz_CLOCK(int32_t baudrate)
 		UBRR0L=0;
 		break;
 	}
+}
+
+
+void USART0_TX_SingleByte(unsigned char cByte)
+{
+	while(!(UCSR0A & (1 << UDRE0)));	// Wait for Tx Buffer to become empty (check UDRE flag)
+	UDR0 = cByte;	// Writing to the UDR transmit buffer causes the byte to be transmitted
+}
+
+void USART0_TX_String(char* sData)
+{
+	int iCount;
+	int iStrlen = strlen(sData);
+	if(0 != iStrlen)
+	{
+		for(iCount = 0; iCount < iStrlen; iCount++)
+		{
+			USART0_TX_SingleByte(sData[iCount]);
+		}
+		USART0_TX_SingleByte(CR);
+		USART0_TX_SingleByte(LF);
+	}
+}
+
+void USART0_DisplayBanner_Head()
+{
+	USART0_TX_String("\r\n\n*****************************************************");
+	USART0_TX_String("      Timing diagnostics (Time unit is 1/16us)");
+	USART0_TX_String("       CheckPoint no.   Value    Microseconds");
+}
+
+void USART0_DisplayBanner_Tail()
+{
+	USART0_TX_String("*****************************************************");
 }
