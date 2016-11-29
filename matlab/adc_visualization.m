@@ -21,13 +21,11 @@ fopen(serialObject);
 %% Set up the figure window
 time = 0;
 adc = 0;
-%target1 = 0;
 sample = 0;
-
 figureHandle = figure('NumberTitle','off',...
     'Name','ADC Visulization',...
     'Visible','off');
-
+%% define X, Y axes
 NX=1000;
 NY=260;
 XLIMS=[0 NX];
@@ -51,7 +49,7 @@ hl = line('XData',time,'YData',adc,...
           'Color', [1 0 1],...
           'LineWidth',1,...
           'Parent',axesHandle);
-%ADC sample rate setting
+%% ADC sample rate setting
 ADC_SR = 75000;
 plot_step = 1000;
 plot_interval = plot_step/ADC_SR;
@@ -62,25 +60,11 @@ count = 1;
 set(figureHandle,'Visible','on');
 set(plotHandle,'Marker','.');
 
-while true %count < 1/plot_interval   
-    %sample = fscanf(serialObject, '%d-%d\n');
-    %sample = fscanf(serialObject, '%d');
+while true
     sample = fread(serialObject,plot_step);
     time(count) = count * plot_interval * 1000;  %milliseconds
-    %w1(count) = sample(1);
-    adc(count) = sample(1); % ref V = 5
-    %target1(count) = sample(2);
-    %set(plotHandle, {'YData'}, {w1;target1}, {'XData'}, {time;time});
-    %set(plotHandle, 'YData', w1, 'XData', time);
+    adc(count) = sample(1); 
     set(hl,'XData', time, 'YData',adc);
-
-    %if count >100
-        %axis([time(count) time(count)+1 min(w1)*1.1 max(w1)*1.1]);
-        %xlim(axesHandle,[time(count) time(count)+1]);
-        %redraw;
-    %end
-    %pause(pauseInterval); 
-
     drawnow limitrate;
     %pause(0.01);
     count = count + 1;
@@ -88,7 +72,6 @@ while true %count < 1/plot_interval
         count = 1;
         set(hl,'XData',get(hl,'XData')+1/plot_interval);
     end
-    %#break in case you close the figure
     if ~ishandle(axesHandle), break, end
 end
 drawnow;

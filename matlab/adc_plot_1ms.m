@@ -13,7 +13,7 @@ delete(instrfindall);
 serialPort = 'COM5';
 serialObject = serial(serialPort);
 serialObject.BaudRate =2000000;
-serialObject.InputBufferSize = 102400;
+serialObject.InputBufferSize = 10240;
 fopen(serialObject);
 %serialObject.ReadAsyncMode = 'continuous';
 %readasync(serialObject);
@@ -40,7 +40,7 @@ plotHandle = plot(axesHandle,time, adc, 'LineWidth', 1);
 set(axesHandle,'YTick',[0:10:NY]);
 set(axesHandle,'XTick',[0:50:NX]);
 % Create xlabel
-xlabel('t_{milliseconds}','FontWeight','bold','FontSize',12,'Color',[0 0 1]);
+xlabel('t_{microsecond}','FontWeight','bold','FontSize',12,'Color',[0 0 1]);
 
 % Create ylabel
 ylabel('ADC Value (0~255) 5V','FontWeight','bold','FontSize',12,'Color',[0 0 1]);
@@ -51,8 +51,10 @@ hl = line('XData',time,'YData',adc,...
           'Color', [1 0 1],...
           'LineWidth',1,...
           'Parent',axesHandle);
-%ADC sample rate setting
-ADC_SR = 75000;
+
+ADC_SR = 69000;
+Tsp = 1000000/ADS_SR; % microsecond of one sample
+Nsp = NX/Tsp;
 plot_step = 1000;
 plot_interval = plot_step/ADC_SR;
 % interval pause for PC data collection

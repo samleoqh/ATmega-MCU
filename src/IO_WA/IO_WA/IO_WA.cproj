@@ -44,7 +44,7 @@
     <com_atmel_avrdbg_tool_avrdragon>
       <ToolOptions>
         <InterfaceProperties>
-          <JtagDbgClock>200000</JtagDbgClock>
+          <JtagDbgClock>300000</JtagDbgClock>
         </InterfaceProperties>
         <InterfaceName>JTAG</InterfaceName>
       </ToolOptions>
@@ -53,7 +53,7 @@
       <ToolName>AVR Dragon</ToolName>
     </com_atmel_avrdbg_tool_avrdragon>
     <avrtoolinterface>JTAG</avrtoolinterface>
-    <avrtoolinterfaceclock>200000</avrtoolinterfaceclock>
+    <avrtoolinterfaceclock>300000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -136,42 +136,55 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="adc_library.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="adc_library.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="driver\i2cmaster.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="driver\lcdpcf8574.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="driver\lcdpcf8574.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="driver\pcf8574.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="driver\pcf8574.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="driver\twimaster.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="usart_library.c">
+    <Compile Include="mylib\adc_library.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="usart_library.h">
+    <Compile Include="mylib\adc_library.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\diagnostic.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\diagnostic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\i2cmaster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\lcdpcf8574.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\lcdpcf8574.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\pcf8574.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\pcf8574.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\pwm_library.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\pwm_library.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\twimaster.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\usart_library.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="mylib\usart_library.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="driver\" />
+    <Folder Include="mylib\" />
+    <Folder Include="mylib\" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

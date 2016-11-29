@@ -33,17 +33,20 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
-../driver/
+../mylib/ \
+../mylib/
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../adc_library.c \
-../driver/lcdpcf8574.c \
-../driver/pcf8574.c \
-../driver/twimaster.c \
 ../main.c \
-../usart_library.c
+../mylib/adc_library.c \
+../mylib/diagnostic.c \
+../mylib/lcdpcf8574.c \
+../mylib/pcf8574.c \
+../mylib/pwm_library.c \
+../mylib/twimaster.c \
+../mylib/usart_library.c
 
 
 PREPROCESSING_SRCS += 
@@ -53,36 +56,44 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-adc_library.o \
-driver/lcdpcf8574.o \
-driver/pcf8574.o \
-driver/twimaster.o \
 main.o \
-usart_library.o
+mylib/adc_library.o \
+mylib/diagnostic.o \
+mylib/lcdpcf8574.o \
+mylib/pcf8574.o \
+mylib/pwm_library.o \
+mylib/twimaster.o \
+mylib/usart_library.o
 
 OBJS_AS_ARGS +=  \
-adc_library.o \
-driver/lcdpcf8574.o \
-driver/pcf8574.o \
-driver/twimaster.o \
 main.o \
-usart_library.o
+mylib/adc_library.o \
+mylib/diagnostic.o \
+mylib/lcdpcf8574.o \
+mylib/pcf8574.o \
+mylib/pwm_library.o \
+mylib/twimaster.o \
+mylib/usart_library.o
 
 C_DEPS +=  \
-adc_library.d \
-driver/lcdpcf8574.d \
-driver/pcf8574.d \
-driver/twimaster.d \
 main.d \
-usart_library.d
+mylib/adc_library.d \
+mylib/diagnostic.d \
+mylib/lcdpcf8574.d \
+mylib/pcf8574.d \
+mylib/pwm_library.d \
+mylib/twimaster.d \
+mylib/usart_library.d
 
 C_DEPS_AS_ARGS +=  \
-adc_library.d \
-driver/lcdpcf8574.d \
-driver/pcf8574.d \
-driver/twimaster.d \
 main.d \
-usart_library.d
+mylib/adc_library.d \
+mylib/diagnostic.d \
+mylib/lcdpcf8574.d \
+mylib/pcf8574.d \
+mylib/pwm_library.d \
+mylib/twimaster.d \
+mylib/usart_library.d
 
 OUTPUT_FILE_PATH +=IO_WA.elf
 
@@ -111,6 +122,10 @@ LINKER_SCRIPT_DEP+=
 
 
 
+
+
+
+
 ./%.o: .././%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.9.2
@@ -118,7 +133,7 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
-driver/%.o: ../driver/%.c
+mylib/%.o: ../mylib/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.9.2
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

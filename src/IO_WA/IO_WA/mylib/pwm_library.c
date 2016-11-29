@@ -51,6 +51,15 @@
 		 break;
 	 }
  }
+
+ void disablePWM()
+ {
+	TCCR0B &=(0b11111000); //no clock resource
+	TCCR2B &=(0b11111000); //no clock resource
+	DDRB&=~(1<<PB7); // close output port
+	DDRG&=~(1<<PG5); // close output port
+ }
+
  void enablePWM(int number , int pulseWidth, int frequency)
  {
 	 // DEFAULT VALUE FOR TIMER 0 AND 2

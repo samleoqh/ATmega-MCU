@@ -1,4 +1,14 @@
-﻿
+﻿/*
+* diagnostic.c
+*
+* Created: 16-11-2016 21:40:10
+* Author: Brian
+*/
+// This lib modified from Richard's sample code
+// Changed the initialise_timing.. removed USART0...
+// Changed configure Time4 for 16Mhz CPU and no prescaler
+// Changed TimingDiagnostic_Display_CheckPoint_DataViaUSART0() for display microsecond precision
+
 #include "diagnostic.h"
 #include "usart_library.h"
 #include <stdio.h>

@@ -12,6 +12,7 @@
 
 
 void enablePWM();
+void disablePWM();
 void enableInvertingPWM(int pwm);
 void changePWMDutyCycle(int pwm,int pulseWidth);
 void enablePWM(int number , int pulseWidth, int frequency);

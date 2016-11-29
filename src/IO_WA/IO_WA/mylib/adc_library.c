@@ -2,12 +2,29 @@
 * adc_library.cpp
 *
 * Created: 16-10-2016 20:41:18
-* Author: ravim
+* Author: ravim & brian 
 */
 
+// Initialise_ADC code modified from Richard's example code
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "adc_library.h"
+
+void startADC()
+{
+	//ADCSRA |= 0b01000000;	// start ADC conversion
+
+	ADCSRA |= (1 << ADEN); // enable adc bit 7
+	ADCSRA |= (1 << ADSC); // start conversion bit 6
+}
+
+void stopADC()
+{
+	//ADCSRA &= 0b10111111;	// start ADC conversion
+
+	ADCSRA &= ~(1 << ADEN); //disable adc, bit 7
+	ADCSRA &= ~(1 << ADSC); //stop conversion, bit 6
+}
 
 void setSamplerateADC(uint8_t rate)
 {
@@ -94,19 +111,3 @@ DIDR2 = 0b11111111;	// Disable digital input on all bits (64-pin version of ATme
 	//ADCSRA |= 0b01000000;	// start ADC conversion	
 }
 //*********  END of ADC configuration subroutine  ********
-
-void startADC()
-{
-    //ADCSRA |= 0b01000000;	// start ADC conversion
-
-	ADCSRA |= (1 << ADEN); // enable adc bit 7
-	ADCSRA |= (1 << ADSC); // start conversion bit 6
-}
-
-void stopADC()
-{
-	//ADCSRA &= 0b10111111;	// start ADC conversion
-
-	ADCSRA &= ~(1 << ADEN); //disable adc, bit 7
-	ADCSRA &= ~(1 << ADSC); //stop conversion, bit 6
-}

@@ -2,15 +2,19 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-adc_library.c
-
-driver\lcdpcf8574.c
-
-driver\pcf8574.c
-
-driver\twimaster.c
-
 main.c
 
-usart_library.c
+mylib\adc_library.c
+
+mylib\diagnostic.c
+
+mylib\lcdpcf8574.c
+
+mylib\pcf8574.c
+
+mylib\pwm_library.c
+
+mylib\twimaster.c
+
+mylib\usart_library.c
 
