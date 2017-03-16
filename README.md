@@ -1,21 +1,22 @@
-#Oscilloscope & Waveform generator
+# Oscilloscope & Waveform generator
 This project is a coursework of the subject - Modern Embedded Systems Programming (USN norway, lecturer Richard Anthony). Our poject is an attempt to use the cheaply available- powerful 8 BIT microcontroller ATMEGA 2560 to implement a usb Oscilloscope & Waveform generator. This microcontroller contains a 10bit Analog to Digital Convertor, 4-USART, 6 Timer/Counter, Waveform generators as well. This makes it a heavily armed device and a smart way of tackling its limits can bring a low cost solution for hobbyists problems.
-###Main subject focus
+
+### Main subject focus
 * Atmel/AVR processors -ATmega2560 MCU (8-bit Processor)
 * Embedded Systems Concept, Archetecture, Programming, etc.
 
-###Programming Languages
+### Programming Languages
 1. AVR RISC Assembler
 2. Embedded C
 
 **IDE Atemel Studio 7**
 [Download Link](http://www.atmel.com/microsite/atmel-studio/)
 
-##Introduction 
+## Introduction 
 Our projects fundamental idea is to push the limits of ADC module on the chip (ATMEGA 2560) to sample the highest possible frequency keeping the Nyquist Sampling Theorem as reference. Sampling frequency should be always greater than or equal to two times of the signal frequency.
-𝒇𝒔𝒂𝒎𝒑𝒍𝒆 ≥ 𝟐𝒇𝒔𝒊𝒈𝒏𝒂𝒍Then push this digital converted analog data through UART- (Asynchronous operation is preferred) to the PC serial port. Use a script in MATLAB to read this serial data and visualize it graphically. This compiles the idea of a signal visualizer. Use the PWM- Timer modules to generate high frequency signals with variable pulse width according to the user needs. This can serve as a signal generator. The interest is in highly calibrated time constrain signals rather than generating a random pulse. This need a careful push of these modules to reach its limits to exploits its functionality.
+𝒇𝒔𝒂𝒎𝒑𝒍𝒆 ≥ 𝟐𝒇𝒔𝒊𝒈𝒏𝒂𝒍 Then push this digital converted analog data through UART- (Asynchronous operation is preferred) to the PC serial port. Use a script in MATLAB to read this serial data and visualize it graphically. This compiles the idea of a signal visualizer. Use the PWM- Timer modules to generate high frequency signals with variable pulse width according to the user needs. This can serve as a signal generator. The interest is in highly calibrated time constrain signals rather than generating a random pulse. This need a careful push of these modules to reach its limits to exploits its functionality.
 
-##User Insructions
+## User Insructions
 * Select ADC Mode
 	1. Power ON the module,
 	2. PUSH the Mode button and select ADC Mode
@@ -36,14 +37,14 @@ Our projects fundamental idea is to push the limits of ADC module on the chip (A
 	6. During the runtime, MODE button and frequency button will be disabled.
 	7. To stop operation, push the Start button again.
 
-**Block Diagram**
+#### Block Diagram
 ![block diagram](fig/block.png)
-**Port Mapping**
+#### Port Mapping
 ![port mapping](fig/portmap.png)
-**Prototype UI**
+#### Prototype UI
 ![UI](fig/prototype.png)
 ![UI](fig/ui.png)
-**ADC Visualiazer**
+#### ADC Visualiazer
 ![ADC Visualizer](fig/ADCVisual.png)
 
 
